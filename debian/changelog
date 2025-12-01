@@ -1,0 +1,6 @@
+linglong-store-layer (2.0.0.1-1) unstable; urgency=medium
+
+  * Package org.deepin.linglong.store offline layer for ll-cli install.
+
+ -- guanzi <admin@odata.cc>  Sun, 30 Nov 2025 23:09:59 +0800
+

@@ -1,0 +1,28 @@
+#!/bin/sh
+set -e
+
+LAYER_PATH="/usr/share/linglong/layers/org.deepin.linglong.store_2.0.0.1_x86_64_binary.layer"
+CLI_BIN="$(command -v ll-cli || command -v linyapsctl || true)"
+TEST_ALIAS="testing"
+TEST_URL="https://cdn-linglong.odata.cc"
+
+case "$1" in
+	configure)
+		if [ -z "$CLI_BIN" ]; then
+			echo "ll-cli/linyapsctl not found; install linyaps (linglong) then run: ll-cli install ${LAYER_PATH}" >&2
+			exit 0
+		fi
+
+		# 尝试加入玲珑社区测试源以便拉取依赖/运行时（参考 deepin 论坛抢先测试源帖）
+		"$CLI_BIN" repo add --alias="${TEST_ALIAS}" stable "${TEST_URL}" >/dev/null 2>&1 || true
+		"$CLI_BIN" repo set-priority "${TEST_ALIAS}" 0 >/dev/null 2>&1 || true
+		"$CLI_BIN" repo set-priority stable 0 >/dev/null 2>&1 || true
+
+		# Install layer non-interactively; ignore errors but print a hint.
+		if ! "$CLI_BIN" install -y "$LAYER_PATH" >/dev/null 2>&1; then
+			echo "Automatic ll-cli install failed. Try: $CLI_BIN install ${LAYER_PATH}" >&2
+		fi
+		;;
+esac
+
+exit 0

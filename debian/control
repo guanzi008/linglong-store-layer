@@ -1,0 +1,17 @@
+Source: linglong-store-layer
+Section: misc
+Priority: optional
+Maintainer:   guanzi <admin@odata.cc>
+Build-Depends: debhelper-compat (= 13)
+Standards-Version: 4.6.2
+Homepage: https://myml.dev/posts/obs-build-linglong/
+Rules-Requires-Root: no
+
+Package: linglong-store-layer
+Architecture: amd64
+Depends: ${misc:Depends}
+Recommends: linyaps | linglong
+Description: Offline Linglong layer for org.deepin.linglong.store
+ This package ships the org.deepin.linglong.store layer and triggers ll-cli
+ to import it during installation. If ll-cli is missing, install linyaps/
+ linglong and run: ll-cli install /usr/share/linglong/layers/org.deepin.linglong.store_2.0.0.1_x86_64_binary.layer

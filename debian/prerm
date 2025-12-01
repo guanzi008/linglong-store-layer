@@ -1,0 +1,14 @@
+#!/bin/sh
+set -e
+
+CLI_BIN="$(command -v ll-cli || command -v linyapsctl || true)"
+
+case "$1" in
+	remove|upgrade)
+		if [ -n "$CLI_BIN" ]; then
+			"$CLI_BIN" uninstall org.deepin.linglong.store/2.0.0.1 >/dev/null 2>&1 || true
+		fi
+		;;
+esac
+
+exit 0

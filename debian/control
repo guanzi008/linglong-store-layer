@@ -9,7 +9,7 @@ Rules-Requires-Root: no
 
 Package: linglong-store-layer
 Architecture: amd64
-Depends: ${misc:Depends}
+Depends: ${misc:Depends}, org.linglong-store.linyapsmanager
 Recommends: linyaps | linglong
 Description: Offline Linglong layer for org.deepin.linglong.store
  This package ships the org.deepin.linglong.store layer and triggers ll-cli

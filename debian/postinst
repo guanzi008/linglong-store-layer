@@ -10,7 +10,7 @@ case "$1" in
 	configure)
 		if [ -z "$CLI_BIN" ]; then
 			echo "ll-cli/linyapsctl not found; install linyaps (linglong) then run: ll-cli install ${LAYER_PATH}" >&2
-			exit 0
+			exit 1
 		fi
 
 		# 尝试加入玲珑社区测试源以便拉取依赖/运行时（参考 deepin 论坛抢先测试源帖）
